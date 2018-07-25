@@ -1,5 +1,6 @@
 package com.example.bbtt.hf7_workout;
 
+//Данные из этого класса будут использоваться фрагментом WorkoutDetailFragment
 public class Workout {
     private String name; //Каждый объект Workout содержит поля названия (name) и описания (description) приложения.
     private String description;
@@ -35,3 +36,4 @@ public class Workout {
         return this.name;
     }
 }
+

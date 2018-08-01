@@ -12,18 +12,18 @@ import android.view.ViewGroup;
  * A simple {@link Fragment} subclass.
  */
 public class WorkoutDetailFragment extends Fragment {
+    private long workoutId; //Идентификатор комплекса упражнений, выбранного пользователем. Позднее будет использован для заполнения данных в фрагменте.
 
-
-    public WorkoutDetailFragment() {
-        // Required empty public constructor
+    //Данный метод вызывается тогда, когда Android потребуется макет фрагмента
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, //Данный метод вызывается тогда, когда Android потребуется макет фрагмента
+                             Bundle savedInstanceState) {
+        //Сообщает Android, какой макет используется фрагментом
+        return inflater.inflate(R.layout.fragment_workout_detail, container, false); //Сообщает Android какой макет используется фрагментом (в данном случае fragment_workout_detail)
     }
 
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_workout_detail, container, false);
+    public void setWorkoutId(long id) { //Метод для присваивания идентификатора. Метод используется активностью для передачи идентификатора фрагменту.
+        this.workoutId = id;
     }
 
 }

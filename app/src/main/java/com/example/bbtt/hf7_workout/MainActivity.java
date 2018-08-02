@@ -9,7 +9,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WorkoutDetailFragment frag = (WorkoutDetailFragment) getFragmentManager().findFragmentById(R.id.detail_frag);
-        frag.setWorkout(1);
+        WorkoutDetailFragment frag = (WorkoutDetailFragment) getFragmentManager().findFragmentById(R.id.detail_frag); //Возвращает ссылку на фрагмент WorkoutDetailFragment. В макете активности этому фрагменту присвоен идентификатор detail_frag.
+        frag.setWorkout(1); //Приказываем WorkoutDetailFragment вывести подробную информацию о произвольно выбранном комплексе, что бы убедиться, что все работает.
     }
 }

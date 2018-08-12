@@ -18,7 +18,7 @@ public class WorkoutListFragment extends ListFragment {
         // Required empty public constructor
     }
 
-    //Добавление слушателя к фрагменту
+    //Добавление интерфейса слушателя к фрагменту
     static interface WorkoutListListener {
         void itemClicked(long id);
     }

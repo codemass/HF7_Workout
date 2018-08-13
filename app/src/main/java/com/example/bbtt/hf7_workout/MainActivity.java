@@ -23,5 +23,6 @@ public class MainActivity extends AppCompatActivity implements WorkoutListFragme
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE); //Включить анимацию растворения и проявления фрагментов.
         ft.commit(); //Закрепить изменения в транзакции.
+        //Теперь при выборе упражнения, справа во фрагменте с подробностями отображаются сведения о выбранных упражнениях. Кнопка назад возвражяет к предыдущему выбранному упражнению. И так до первого.
     }
 }

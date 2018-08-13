@@ -19,6 +19,10 @@ public class WorkoutDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, //Данный метод вызывается тогда, когда Android потребуется макет фрагмента
                              Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            workoutId = savedInstanceState.getLong("workoutId"); //Задать значение workoutId
+        }
+
         //Сообщает Android, какой макет используется фрагментом
         return inflater.inflate(R.layout.fragment_workout_detail, container, false); //Сообщает Android какой макет используется фрагментом (в данном случае fragment_workout_detail)
     }
@@ -34,6 +38,11 @@ public class WorkoutDetailFragment extends Fragment {
             TextView description = (TextView) view.findViewById(R.id.textDescription);
             description.setText(workout.getDescription());
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) { //Сохранить значение workoutId в объекте savedInstanceState типа Bundle перед уничтожением фрагмента. Позднее сохраненное значение читается в методе onCreateView().
+        savedInstanceState.putLong("workoutId", workoutId);
     }
 
     public void setWorkout(long id) { //Метод для присваивания идентификатора. Метод используется активностью для передачи идентификатора фрагменту.

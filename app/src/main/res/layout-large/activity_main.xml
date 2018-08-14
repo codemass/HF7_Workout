@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         />
 
+    <!-- FrameLayout нужен тогда, когда фрагмент должен не только отображать, но и взаимодействовать с пользователем (реагировать на нажатие, например) -->
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="0dp"

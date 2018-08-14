@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements WorkoutListFragme
     public void itemClicked(long id) {
 
         View fragmentContainer = findViewById(R.id.fragment_container); //Получить ссылку на фрейм, содержащий WorkoutDetailFragment. Он будет существовать, если приложение выполняется на устройстве с большим экраном.
-        if (fragmentContainer !=null) {
+        if (fragmentContainer !=null) { //Если fragmentContainer существует, значит приложение использует макет activity_main.xml из папки layout-large. Значит приложение запустили на планшете.
             //Здесь размещается код отображения подробной информации. Этот метод определяется в слушателе.
             //Замена фрагмента во время выполнения происходит в виде транзакции фрагмента - набора изменений относящихся к фрагменту.
             //Этот код должен выполняться только в том случае, если фрейм присутсвует в макете.

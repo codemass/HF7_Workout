@@ -22,14 +22,14 @@ public class WorkoutDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             workoutId = savedInstanceState.getLong("workoutId"); //Задать значение workoutId
+        } else { //Нужен для того, что бы при повороте экрана, не создавался новый фрагмент и тем самым не сбразывались данные о количестве секунд секундомера.
+            FragmentTransaction ft = getChildFragmentManager().beginTransaction(); //Открыть транзакцию. Обратить внимание: тут вместо getFragmentManager используется getChildFragmentManager. Он создает транцанцию вложенную в другую транзакцию. Используется когда фрагмент вложен в фрагмент.
+            StopwatchFragment stopwatchFragment = new StopwatchFragment();
+            ft.replace(R.id.stopwatch_container, stopwatchFragment); //Заменить фрагмент во фрейме
+            ft.addToBackStack(null); //Добавить транзакцию в стек возврата.
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE); //Выбрать стиль анимации перехода.
+            ft.commit(); //Закрепить транзакцию.
         }
-        FragmentTransaction ft = getChildFragmentManager().beginTransaction(); //Открыть транзакцию. Обратить внимание: тут вместо getFragmentManager используется getChildFragmentManager. Он создает транцанцию вложенную в другую транзакцию. Используется когда фрагмент вложен в фрагмент.
-        StopwatchFragment stopwatchFragment = new StopwatchFragment();
-        ft.replace(R.id.stopwatch_container, stopwatchFragment); //Заменить фрагмент во фрейме
-        ft.addToBackStack(null); //Добавить транзакцию в стек возврата.
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE); //Выбрать стиль анимации перехода.
-        ft.commit(); //Закрепить транзакцию.
-
         //Сообщает Android, какой макет используется фрагментом
         return inflater.inflate(R.layout.fragment_workout_detail, container, false); //Сообщает Android какой макет используется фрагментом (в данном случае fragment_workout_detail)
     }

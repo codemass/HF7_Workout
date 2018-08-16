@@ -8,9 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Button;
 
 
-public class StopwatchFragment extends Fragment {
+public class StopwatchFragment extends Fragment implements View.OnClickListener { //Фрагмент реализует интерфейс OnClickListener
 
     private int seconds=0; //Количество секунд на секундомере
     private boolean running; //Секундомер работает?
@@ -39,7 +40,33 @@ public class StopwatchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_stopwatch, container, false);
         runTimer(layout);
+
+        Button startButton = (Button) layout.findViewById(R.id.start_button); //Получить ссылку на кнопку.
+        startButton.setOnClickListener(this); //Назначить слушателя для кнопки.
+
+        Button stopButton = (Button) layout.findViewById(R.id.stop_button);
+        stopButton.setOnClickListener(this);
+
+        Button resetButton = (Button) layout.findViewById(R.id.reset_button);
+        resetButton.setOnClickListener(this);
+
         return layout;
+    }
+
+    //Реализация интерфеса OnClickListener требует переопределения метода onClick().
+    @Override
+    public void onClick (View v) {  //Представление на котором сделан клик.
+        switch (v.getId()) {        //Проверить на каком представлении кликнул пользователь.
+            case R.id.start_button: //Если клик был на кнопке Start, вызвать метод onClickStart
+                onClickStart(v);
+                break;
+            case R.id.stop_button: //Если клик был на кнопке Stop, вызвать метод onClickStop
+                onClickStop(v);
+                break;
+            case R.id.reset_button: //Если клик был на кнопке Reset, вызвать метод onClickReset
+                onClickReset(v);
+                break;
+        }
     }
 
     @Override

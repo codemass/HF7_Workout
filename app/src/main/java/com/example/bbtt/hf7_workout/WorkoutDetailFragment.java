@@ -1,6 +1,7 @@
 package com.example.bbtt.hf7_workout;
 
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment; //По умолчанию студия импортирует android.support.v4.app.Fragment. Но надо поменять на app.Fragment, иначе в классе MainActivity будет ошибка с приведеним типов.
 import android.view.LayoutInflater;
@@ -22,6 +23,12 @@ public class WorkoutDetailFragment extends Fragment {
         if (savedInstanceState != null) {
             workoutId = savedInstanceState.getLong("workoutId"); //Задать значение workoutId
         }
+        FragmentTransaction ft = getChildFragmentManager().beginTransaction(); //Открыть транзакцию. Обратить внимание: тут вместо getFragmentManager используется getChildFragmentManager. Он создает транцанцию вложенную в другую транзакцию. Используется когда фрагмент вложен в фрагмент.
+        StopwatchFragment stopwatchFragment = new StopwatchFragment();
+        ft.replace(R.id.stopwatch_container, stopwatchFragment); //Заменить фрагмент во фрейме
+        ft.addToBackStack(null); //Добавить транзакцию в стек возврата.
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE); //Выбрать стиль анимации перехода.
+        ft.commit(); //Закрепить транзакцию.
 
         //Сообщает Android, какой макет используется фрагментом
         return inflater.inflate(R.layout.fragment_workout_detail, container, false); //Сообщает Android какой макет используется фрагментом (в данном случае fragment_workout_detail)
